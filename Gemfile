@@ -13,11 +13,12 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+# gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# gem "jbuilder"
 
 gem 'haml-rails', '~> 2.1'
+gem 'faraday', '~> 2.12', '>= 2.12.2'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
