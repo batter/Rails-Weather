@@ -10,7 +10,8 @@ class WeatherService
   end
 
   def parsed_response
-    @parsed_response ||= Rails.cache.fetch(cache_key) { JSON.parse(response.body) }
+    @parsed_response ||=
+      Rails.cache.fetch(cache_key, expires_in: 30.minutes) { JSON.parse(response.body) }
   end
 
   def cached?
