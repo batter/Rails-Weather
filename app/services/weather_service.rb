@@ -10,13 +10,21 @@ class WeatherService
   end
 
   def parsed_response
-    @parsed_response ||= JSON.parse(response.body)
+    @parsed_response ||= Rails.cache.fetch(cache_key) { JSON.parse(response.body) }
+  end
+
+  def cached?
+    Rails.cache.exist?(cache_key)
   end
 
   protected
 
   def response
-    @response ||= Faraday.get("https://api.pirateweather.net/forecast/#{api_key}/#{place.lat},#{place.lng}")
+    @response ||= Faraday.get("https://api.pirateweather.net/forecast/#{api_key}/#{place.coords}")
+  end
+
+  def cache_key
+    "coords/#{place.coords}"
   end
 
   private

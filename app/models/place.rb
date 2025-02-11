@@ -3,10 +3,15 @@
 class Place
   include ActiveModel::API
 
-  attr_accessor :lat, :lng
+  attr_accessor :lat, :lng, :cached
 
   alias_method :latitude, :lat
   alias_method :longitude, :lng
 
   validates :lat, :lng, presence: true
+
+  def coords
+    "#{lat},#{lng}"
+  end
+  alias_method :coordinates, :coords
 end
