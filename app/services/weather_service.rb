@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class WeatherService
+  FORECAST_BASE_URI = 'https://api.pirateweather.net/forecast/'
+
   delegate :api_key, to: :class
 
   attr_accessor :place
@@ -21,7 +23,7 @@ class WeatherService
   protected
 
   def response
-    @response ||= Faraday.get("https://api.pirateweather.net/forecast/#{api_key}/#{place.coords}")
+    @response ||= Faraday.get("#{FORECAST_BASE_URI}#{api_key}/#{place.coords}")
   end
 
   def cache_key

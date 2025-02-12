@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GeocodingService
+  GOOGLEMAPS_BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
+
   delegate :api_key, to: :class
 
   def initialize(address)
@@ -31,7 +33,7 @@ class GeocodingService
   end
 
   def response
-    @response ||= Faraday.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=#{api_key}")
+    @response ||= Faraday.get("#{GOOGLEMAPS_BASE_URI}?address=#{@address}&key=#{api_key}")
   end
 
   def cache_key
