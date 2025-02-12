@@ -27,7 +27,7 @@ class WeatherService
   end
 
   def cache_key
-    "coords/#{place.coords}"
+    "address/#{place.address}"
   end
 
   private

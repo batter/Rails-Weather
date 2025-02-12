@@ -9,22 +9,28 @@ class GeocodingService
     @address = address.strip
   end
 
+  def first_result
+    @first_result ||= parsed_response['results']&.first
+  end
+
   def coords
     return {} unless response.success?
 
-    @coords ||= begin
-      result = parsed_response['results']&.first
-      result&.dig('geometry', 'location')&.merge(cached: cached?)
-    end
+    @coords ||= first_result&.dig('geometry', 'location')&.merge(cached:, address: formatted_address)
+  end
+
+  def formatted_address
+    @formatted_address ||= first_result&.[]('formatted_address')
   end
 
   def place
     @place ||= Place.new(coords) if coords.present?
   end
 
-  def cached?
+  def cached
     Rails.cache.exist?(cache_key)
   end
+  alias_method :cached?, :cached
 
   protected
 

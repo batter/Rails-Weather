@@ -3,7 +3,7 @@
 class Place
   include ActiveModel::API
 
-  attr_accessor :lat, :lng, :cached
+  attr_accessor :lat, :lng, :cached, :address
 
   alias_method :latitude, :lat
   alias_method :longitude, :lng
