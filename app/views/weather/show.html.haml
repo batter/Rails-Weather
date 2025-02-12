@@ -1,10 +1,21 @@
-%canvas#icon1{ width: 128, height: 128 }
+Weather for:
+= place.coords
 
-.cache
-  Cached?:
-  = weather_service.cached?
+- if cached?
+  .cache
+    Cached?: &#x2705;
 
-.weather= debug weather_service.parsed_response
+.current= render 'panel', forecast: forecast['currently']
+
+%hr
+&nbsp;
+
+.hourly
+  - collection = forecast.dig('hourly', 'data').first(12)
+  = render partial: 'panel', collection:, as: :forecast, locals: { small: true }
 
 = javascript_include_tag 'skycons'
-= javascript_include_tag 'main', type: 'module'
+= javascript_include_tag 'main'
+
+:javascript
+  addSkyConsByClass('skycon');

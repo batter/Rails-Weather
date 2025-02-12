@@ -1,5 +1,5 @@
 class WeatherController < ApplicationController
-  helper_method :weather_service
+  helper_method :place, :forecast, :cached?
 
   def index
   end
@@ -10,10 +10,19 @@ class WeatherController < ApplicationController
 
   private
 
+  def place
+    @place ||= GeocodingService.new(params[:address]).place
+  end
+
   def weather_service
-    @weather_service ||= begin
-      place = GeocodingService.new(params[:address]).place
-      WeatherService.new(place)
-    end
+    @weather_service ||= WeatherService.new(place)
+  end
+
+  def cached?
+    weather_service.cached?
+  end
+
+  def forecast
+    @forecast ||= weather_service.parsed_response
   end
 end

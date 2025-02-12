@@ -15,5 +15,6 @@
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     =# javascript_importmap_tags
   %body
-    %h1#logo Weather
+    = link_to root_path, id: 'rootLink' do
+      %h1#logo Weather
     = yield

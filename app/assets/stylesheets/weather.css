@@ -1,0 +1,12 @@
+.current, .hourly {
+  text-align: center;
+}
+
+.weather_panel {
+  display: inline-block;
+  padding: 0 6px;
+}
+
+.precipProbability {
+  color: #8BC0FC;
+}

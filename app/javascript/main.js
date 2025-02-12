@@ -1,7 +1,17 @@
 var skycons = new Skycons({
-	"monochrome": true,
-	"colors" : { "main": "#444" }
+	'monochrome': true,
+	'colors': { 'main': '#444' }
 });
 
-skycons.add('icon1', Skycons.PARTLY_CLOUDY_DAY);
+function addSkyConById(id, icon) {
+  skycons.add(id, Skycons[icon.toUpperCase()]);
+}
+
+function addSkyConsByClass(className) {
+  let elements = document.getElementsByClassName(className);
+
+  Array.prototype.map.call(elements, (element) => {
+    skycons.add(element, Skycons[element.dataset.icon.toUpperCase()]);
+  });
+}
 

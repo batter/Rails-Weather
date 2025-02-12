@@ -1,0 +1,13 @@
+- small ||= false
+- skycon_size ||= small == true ? 32 : 128
+
+.weather_panel
+  %canvas.skycon{ width: skycon_size, height: skycon_size, data: { icon: forecast['icon'] } }
+  - if forecast['precipProbability'].to_f.positive?
+    - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
+    %h4.precipProbability= number_to_percentage(percent_rounded, precision: 0)
+  - else
+    %h4 &nbsp;
+  %h4.temp
+    = forecast['temperature'].to_f.round
+    &deg;
