@@ -5,7 +5,8 @@
   %canvas.skycon{ width: skycon_size, height: skycon_size, data: { icon: forecast['icon'] } }
   - if forecast['precipProbability'].to_f.positive?
     - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
-    %h4.precipProbability= number_to_percentage(percent_rounded, precision: 0)
+    %h4.precipProbability{ title: 'Precipitation Probability' }
+      = number_to_percentage(percent_rounded, precision: 0)
   - else
     %h4 &nbsp;
   %h4.temp

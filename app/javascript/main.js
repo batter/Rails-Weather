@@ -1,10 +1,12 @@
 var skycons = new Skycons({
 	'monochrome': true,
-	'colors': { 'main': '#444' }
+	'color': '#444'
 });
 
 function addSkyConById(id, icon) {
   skycons.add(id, Skycons[icon.toUpperCase()]);
+
+  skycons.play();
 }
 
 function addSkyConsByClass(className) {
@@ -13,5 +15,7 @@ function addSkyConsByClass(className) {
   Array.prototype.map.call(elements, (element) => {
     skycons.add(element, Skycons[element.dataset.icon.toUpperCase()]);
   });
+
+  skycons.play();
 }
 
