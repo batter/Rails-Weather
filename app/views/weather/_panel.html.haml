@@ -2,6 +2,10 @@
 - skycon_size ||= small == true ? 32 : 128
 
 .weather_panel
+  - if small
+    - time = Time.at(forecast['time']).strftime("%l %P")
+    - time = 'Now' if Time.at(forecast['time']) < Time.now
+    .forecastTime= time
   %canvas.skycon{ width: skycon_size, height: skycon_size, data: { icon: forecast['icon'] } }
   - if forecast['precipProbability'].to_f.positive?
     - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
