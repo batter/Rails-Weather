@@ -5,4 +5,3 @@ var skycons = new Skycons({
 
 skycons.add('icon1', Skycons.PARTLY_CLOUDY_DAY);
 
-debugger;

@@ -1,7 +1,4 @@
-%h2 Weather
-
 = form_tag forecast_path, method: 'get', remote: false do
-  Look up weather for:
-  = text_field_tag 'address'
+  = text_field_tag :address, nil, placeholder: 'Search Address or Zip Code', size: 50
 
   = submit_tag 'Fetch'

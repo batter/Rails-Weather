@@ -7,4 +7,14 @@
  * depending on specificity.
  *
  * Consider organizing styles into separate files for maintainability.
+
+ *= require_tree
+ *= require_self
  */
+
+#logo {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  background: #09B1EC;
+  color: white;
+  padding: 10px;
+}
