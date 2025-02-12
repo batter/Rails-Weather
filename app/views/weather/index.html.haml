@@ -1,0 +1,7 @@
+%h2 Weather
+
+= form_tag forecast_path, method: 'get', remote: false do
+  Look up weather for:
+  = text_field_tag 'address'
+
+  = submit_tag 'Fetch'

@@ -1,0 +1,12 @@
+%h1 Weather
+
+%canvas#icon1{ width: 128, height: 128 }
+
+.cache
+  Cached?:
+  = weather_service.cached?
+
+.weather= debug weather_service.parsed_response
+
+= javascript_include_tag 'skycons'
+= javascript_include_tag 'main', type: 'module'
