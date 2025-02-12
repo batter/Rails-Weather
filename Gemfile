@@ -64,3 +64,6 @@ group :development do
   gem 'html2haml', '~> 2.3'
 end
 
+group :test do
+  gem 'vcr', '~> 6.1'
+end
