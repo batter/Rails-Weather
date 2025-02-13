@@ -10,7 +10,7 @@
     - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
     %h4.precipProbability{ title: 'Precipitation Probability' }
       = number_to_percentage(percent_rounded, precision: 0)
-  - else
+  - elsif small
     %h4 &nbsp;
   %h4.temp
     = forecast['temperature'].to_f.round
