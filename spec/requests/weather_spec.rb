@@ -7,6 +7,30 @@ RSpec.describe "Weathers", type: :request do
 
       expect(response).to have_http_status(:ok)
     end
+
+    context 'Google Maps API key missing' do
+      before { allow(GeocodingService).to receive(:api_key) }
+
+      it 'redirects to the missing credentials page' do
+        get('/')
+
+        expect(response).to redirect_to(missing_credentials_path)
+        follow_redirect!
+        expect(response.body).to include('Google Maps API Key')
+      end
+    end
+
+    context 'Pirate Weather API key missing' do
+      before { allow(WeatherService).to receive(:api_key) }
+
+      it 'redirects to the missing credentials page' do
+        get('/')
+
+        expect(response).to redirect_to(missing_credentials_path)
+        follow_redirect!
+        expect(response.body).to include('Pirate Weather API Key')
+      end
+    end
   end
 
   describe "GET /forecast" do

@@ -21,14 +21,17 @@
 
 #rootLink { text-decoration: none; }
 
-#flash { margin: 1em 0; }
+#flash,
+.missing_credentials { margin: 1em 0; }
 
-#flash div {
+#flash div,
+.missing_credentials div {
   font-weight: bold;
   padding: 0.2em;
 }
 
-#flash .error {
+#flash .error,
+.missing_credentials .error {
   background-color: #FF5733;
 }
 
