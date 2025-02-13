@@ -66,4 +66,5 @@ end
 
 group :test do
   gem 'vcr', '~> 6.1'
+  gem 'rails-controller-testing', '~> 1.0'
 end
