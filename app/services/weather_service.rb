@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Service for fetching the weather forecast from Pirate Weather's API for specific geocoordinates
+# for expected usage documentation see spec/services/weather_service_spec.rb
+
 class WeatherService
   FORECAST_BASE_URI = 'https://api.pirateweather.net/forecast/'
 
