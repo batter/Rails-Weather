@@ -4,6 +4,7 @@ class GeocodingService
   GOOGLEMAPS_BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
 
   delegate :api_key, to: :class
+  delegate :success?, to: :response
 
   def initialize(address)
     @address = address.strip
@@ -14,7 +15,7 @@ class GeocodingService
   end
 
   def coords
-    return {} unless response.success?
+    return {} unless success?
 
     @coords ||= first_result&.dig('geometry', 'location')&.merge(cached:, address: formatted_address)
   end
