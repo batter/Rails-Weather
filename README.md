@@ -17,6 +17,8 @@ Before launching the server or running tests, add API key credentials for
 rails credentials:edit
 ```
 
+Credentials should be set as `google_api_key` and `pirate_weather_api_key`
+
 To run tests:
 
 ```

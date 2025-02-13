@@ -38,6 +38,10 @@ class WeatherService
   private
 
   def self.api_key
-    @api_key ||= Rails.application.credentials.pirate_weather_api_key[Rails.env]
+    @api_key ||= credential.is_a?(Hash) ? credential[Rails.env] : credential
+  end
+
+  def self.credential
+    @credential ||= Rails.application.credentials.pirate_weather_api_key
   end
 end
