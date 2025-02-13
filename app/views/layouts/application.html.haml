@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= content_for(:title) || "Weather"
+    %title= content_for(:title) || 'Ben Weather'
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
     %meta{:content => "yes", :name => "mobile-web-app-capable"}/
@@ -16,7 +16,7 @@
     =# javascript_importmap_tags
   %body
     = link_to root_path, id: 'rootLink' do
-      %h1#logo Weather
+      %h1#logo Ben Weather
     - if flash.present?
       #flash
         - flash.each do |type, message|
