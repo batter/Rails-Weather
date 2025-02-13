@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Service for fetching geolocation coordinates from google maps API given an address
+# for expected usage documentation see spec/services/geocoding_service_spec.rb
+
 class GeocodingService
   GOOGLEMAPS_BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
 
@@ -8,10 +11,6 @@ class GeocodingService
 
   def initialize(address)
     @address = address.strip
-  end
-
-  def first_result
-    @first_result ||= parsed_response['results']&.first
   end
 
   def coords
@@ -35,12 +34,16 @@ class GeocodingService
 
   protected
 
+  def response
+    @response ||= Faraday.get("#{GOOGLEMAPS_BASE_URI}?address=#{@address}&key=#{api_key}")
+  end
+
   def parsed_response
     @parsed_response ||= Rails.cache.fetch(cache_key, expires_in: 30.minutes) { JSON.parse(response.body) }
   end
 
-  def response
-    @response ||= Faraday.get("#{GOOGLEMAPS_BASE_URI}?address=#{@address}&key=#{api_key}")
+  def first_result
+    @first_result ||= parsed_response['results']&.first
   end
 
   def cache_key
