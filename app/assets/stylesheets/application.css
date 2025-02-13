@@ -13,10 +13,25 @@
  */
 
 #logo {
-  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
   background: #09B1EC;
   color: white;
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
   padding: 10px;
 }
 
 #rootLink { text-decoration: none; }
+
+#flash { margin: 1em 0; }
+
+#flash div {
+  font-weight: bold;
+  padding: 0.2em;
+}
+
+#flash .error {
+  background-color: #FF5733;
+}
+
+#flash .warning {
+  background-color: #FFC300;
+}

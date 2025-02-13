@@ -17,4 +17,8 @@
   %body
     = link_to root_path, id: 'rootLink' do
       %h1#logo Weather
+    - if flash.present?
+      #flash
+        - flash.each do |type, message|
+          %div{ class: type }= message
     = yield

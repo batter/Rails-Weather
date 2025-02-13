@@ -1,11 +1,14 @@
 class WeatherController < ApplicationController
   helper_method :place, :forecast, :cached?
 
-  def index
-  end
+  def index; end
 
   def show
-    redirect_to root_path and return if params[:address].blank?
+    if params[:address].blank?
+      redirect_to root_path, flash: { error: 'Please enter a valid address' }
+    elsif place.blank?
+      redirect_to root_path, flash: { warning: 'Address could not be resolved' }
+    end
   end
 
   private
