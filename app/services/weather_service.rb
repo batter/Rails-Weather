@@ -12,6 +12,8 @@ class WeatherService
   end
 
   def parsed_response
+    return if place.invalid?
+
     @parsed_response ||=
       Rails.cache.fetch(cache_key, expires_in: 30.minutes) { JSON.parse(response.body) }
   end
@@ -23,7 +25,7 @@ class WeatherService
   protected
 
   def response
-    @response ||= Faraday.get("#{FORECAST_BASE_URI}#{api_key}/#{place.coords}")
+    @response ||= Faraday.get("#{FORECAST_BASE_URI}#{api_key}/#{place.coords}") if place.valid?
   end
 
   def cache_key
