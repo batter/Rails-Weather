@@ -9,7 +9,9 @@ similar cache instead of using memory or DB store for caching the addresses and 
 
 Makes external API calls to Google for geolocation data and Pirate Weather for weather forecasts.
 
-Before launching the server or running tests, add API key credentials for Google and Pirate Weather
+Before launching the server or running tests, add API key credentials for
+[Google](https://developers.google.com/maps) and
+[Pirate Weather](https://pirate-weather.apiable.io/)
 
 ```
 rails credentials:edit
