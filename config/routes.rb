@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   root "weather#index"
 
   get 'forecast', to: 'weather#show'
+  get 'missing_credentials', to: 'weather#missing_credentials'
 end
