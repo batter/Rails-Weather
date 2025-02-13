@@ -36,6 +36,12 @@ require 'rspec/rails'
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :faraday
+
+  Rails.application.credentials.config.each do |key, value|
+    config.filter_sensitive_data(key) do
+      value.is_a?(String) ? value : value[Rails.env.to_sym]
+    end
+  end
 end
 
 RSpec.configure do |config|
