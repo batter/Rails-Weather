@@ -13,7 +13,8 @@ function addSkyConsByClass(className) {
   let elements = document.getElementsByClassName(className);
 
   Array.prototype.map.call(elements, (element) => {
-    skycons.add(element, Skycons[element.dataset.icon.toUpperCase()]);
+    let iconName = element.dataset.icon.toUpperCase().replaceAll('-', '_');
+    skycons.add(element, Skycons[iconName]);
   });
 
   skycons.play();

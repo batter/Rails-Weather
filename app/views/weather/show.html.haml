@@ -5,7 +5,7 @@ Weather for:
   .cache
     Cached?: &#x2705;
 
-%h3 Currently:
+%h2 Currently:
 .current= render 'panel', forecast: forecast['currently']
 
 %hr
@@ -13,7 +13,8 @@ Weather for:
 
 .hourly
   - collection = forecast.dig('hourly', 'data').first(12)
-  = render partial: 'panel', collection:, as: :forecast, locals: { small: true }
+  - any_precip = collection.any? { |forecast| forecast['precipProbability'].to_f.positive? }
+  = render partial: 'panel', collection:, as: :forecast, locals: { small: true, any_precip: }
 
 = javascript_include_tag 'skycons'
 = javascript_include_tag 'main'

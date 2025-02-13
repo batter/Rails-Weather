@@ -1,5 +1,7 @@
 - small ||= false
 - skycon_size ||= small == true ? 32 : 128
+- any_precip ||= false
+- force_display_precip_header = small && any_precip
 
 .weather_panel
   - if small
@@ -10,7 +12,7 @@
     - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
     %h4.precipProbability{ title: 'Precipitation Probability' }
       = number_to_percentage(percent_rounded, precision: 0)
-  - elsif small
+  - elsif force_display_precip_header
     %h4 &nbsp;
   %h4.temp
     = forecast['temperature'].to_f.round
