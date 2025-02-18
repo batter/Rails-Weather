@@ -1,5 +1,6 @@
 - small ||= false
 - skycon_size ||= small == true ? 32 : 128
+- icon_underscore = forecast['icon']&.underscore
 - any_precip ||= false
 - force_display_precip_header = small && any_precip
 
@@ -7,7 +8,7 @@
   - if small
     - time = Time.at(forecast['time'])
     .forecastTime= Time.now.hour == time.hour ? 'Now' : time.strftime("%l %P")
-  %canvas.skycon{ width: skycon_size, height: skycon_size, data: { icon: forecast['icon'] } }
+  %canvas.skycon{ width: skycon_size, height: skycon_size, title: icon_underscore&.humanize, data: { icon: icon_underscore } }
   - if forecast['precipProbability'].to_f.positive?
     - percent_rounded = (forecast['precipProbability'].to_f * 100).to_i
     %h4.precipProbability{ title: 'Precipitation Probability' }
