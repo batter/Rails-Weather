@@ -93,7 +93,7 @@ GEM
     erubis (2.7.0)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.12.2)
+    faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -129,9 +129,9 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.10.0)
+    json (2.11.3)
     language_server-protocol (3.17.0.4)
-    logger (1.6.5)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -334,7 +334,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     vcr (6.3.1)
       base64
@@ -363,7 +363,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
-  faraday (~> 2.12, >= 2.12.2)
+  faraday (~> 2.13)
   haml-rails (~> 2.1)
   html2haml (~> 2.3)
   importmap-rails
